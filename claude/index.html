@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>The Beige Stallion</title>
+<meta name="description" content="A memorial for a beige 2000 Toyota Corolla. Bought for $1,200 in 2018. Let go for $110 in cash in 2026. Past 200,000 miles in between.">
+<meta name="theme-color" content="#0d1524">
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (rm) d.classList.add('rm'); else d.classList.add('intro-on');
+  })();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the memorial</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 48 32">
+      <path d="M9 9h5V6h12v3h4l3 3h4V9h3v14h-3v-3h-4l-3 4H16l-3-3H9v-3H6v4H3V12h3v3h3z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-battery" viewBox="0 0 48 32">
+      <path d="M6 8h8V5h6v3h8V5h6v3h8v20H6zM12 15v3h7v-3zm17 0v3h3v3h3v-3h3v-3h-3v-3h-3v3z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="i-oil" viewBox="0 0 48 32">
+      <path d="M4 14l10-3h6v-3h-4V5h12v3h-4v3h6l8-4 6 3-12 13H12v-6l-6-1zm38 4c2 3 3 4 3 6a3 3 0 0 1-6 0c0-2 1-3 3-6z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-brake" viewBox="0 0 48 32">
+      <circle cx="24" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M10 6a16 16 0 0 0 0 20M38 6a16 16 0 0 1 0 20" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M22.4 9h3.2l-.6 9h-2zM22.3 20h3.4v3.2h-3.4z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-car" viewBox="0 0 64 26">
+      <path d="M3 18.5c0-2.6 1.3-4 4.3-4.6l8.8-1.8 7.7-6.6c1.3-1.1 2.8-1.6 4.5-1.6h12.4c1.9 0 3.6.8 4.8 2.2l4.7 5.7 6.1 1.2c2.6.5 4.2 2.2 4.2 4.8v2.7c0 1-.8 1.8-1.8 1.8h-4.5a6.2 6.2 0 0 0-12.2 0H22.4a6.2 6.2 0 0 0-12.2 0H4.8c-1 0-1.8-.8-1.8-1.8z" fill="currentColor"/>
+      <circle cx="16.3" cy="21" r="4.4" fill="currentColor"/><circle cx="48.3" cy="21" r="4.4" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Turn the key. Shown only with JS and without reduced motion. -->
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-lines" hidden>
+  <div class="intro__stage" aria-hidden="true">
+    <div class="intro__cluster">
+      <img src="img/l/IMG_4444.jpg" alt="" width="1280" height="960" decoding="async">
+      <span class="intro__sweep"></span>
+      <span class="intro__halo"></span>
+    </div>
+    <span class="intro__vignette"></span>
+  </div>
+  <div class="intro__inner">
+    <p class="intro__lines" id="intro-lines">A 2000 Toyota Corolla. Beige. Bought on Craigslist for $1,200.<br><span>Please take a moment.</span></p>
+    <div class="intro__start">
+      <button type="button" class="btn btn--key" id="turn-key"><span class="btn--key__ring" aria-hidden="true"></span>Turn the key</button>
+      <p class="intro__small">Starts the memorial. Sound only if you choose it.</p>
+    </div>
+  </div>
+  <p class="intro__title" aria-hidden="true"><span>The Beige Stallion</span><span class="mono">2000 to 2026</span></p>
+  <button type="button" class="intro__skip" id="skip-intro">Skip</button>
+</div>
+
+<!-- Instrument strip: odometer and anthem, always visible, never over content at rest. -->
+<header class="strip" aria-label="Instruments">
+  <a class="strip__mark" href="#top">The Beige Stallion</a>
+  <p class="strip__running" aria-hidden="true"><span id="running">2000 to 2026</span></p>
+  <div class="strip__right">
+    <button type="button" class="odo" id="odo" aria-describedby="odo-note">
+      <span class="vh" id="odo-text">Odometer: 150,000 miles</span>
+      <svg class="odo__cel" aria-hidden="true"><use href="#i-check"/></svg>
+      <span class="odo__label" aria-hidden="true">Odometer</span>
+      <span class="odo__drums" aria-hidden="true"></span>
+    </button>
+    <span class="odo__note" id="odo-note" role="tooltip">Past 200,000. The last mileage was never written down.</span>
+    <button type="button" class="anthem-switch" id="anthem-switch" aria-pressed="false">
+      <span class="anthem-switch__dot" aria-hidden="true"></span>
+      <span class="anthem-switch__label">Anthem</span>
+      <span class="anthem-switch__state" aria-hidden="true">off</span>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- Cover -->
+<section class="cover night" id="top" aria-labelledby="title">
+  <div class="opener__media"><img src="img/l/IMG_20190112_170646.jpg" srcset="img/s/IMG_20190112_170646.jpg 720w, img/l/IMG_20190112_170646.jpg 1280w, img/full/IMG_20190112_170646.jpg 2000w" sizes="100vw" width="1280" height="960" alt="The beige Corolla on desert gravel, palm trees and a stormy, glowing sky behind, snow on the peaks." style="object-position:28% 60%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>12 Jan 2019</time> <span class="cap">Near Desert Hot Springs, snow on the San Jacinto mountains. The Palm Springs loop day.</span></p>
+  <div class="cover__text">
+    <p class="cover__eyebrow mono">In memoriam</p>
+    <h1 id="title" tabindex="-1"><span class="cover__name">The Beige Stallion.</span> <span class="cover__years">2000 to 2026.</span></h1>
+    <p class="cover__sub">Bought for $1,200 in 2018. Let go for $110 in cash in 2026. Past 200,000 miles in between.</p>
+    <button type="button" class="btn btn--ghost" id="anthem-invite" data-anthem>Play the anthem</button>
+  </div>
+</section>
+
+<!-- Order of service -->
+<nav class="order" aria-labelledby="order-title">
+  <div class="order__inner">
+    <h2 id="order-title" class="order__title">Order of Service</h2>
+    <ol class="order__list">
+      <li><a href="#ignition"><span class="order__n">0</span><span class="order__name">Ignition</span><span class="order__d mono">31 Aug 2018</span></a></li>
+      <li><a href="#handshake"><span class="order__n">I</span><span class="order__name">The Handshake</span><span class="order__d mono">August 2018</span></a></li>
+      <li><a href="#naming"><span class="order__n">II</span><span class="order__name">The Naming</span><span class="order__d mono">Late 2018</span></a></li>
+      <li><a href="#roads"><span class="order__n">III</span><span class="order__name">The Roads</span><span class="order__d mono">2018 to 2022</span></a></li>
+      <li><a href="#quiet"><span class="order__n">IV</span><span class="order__name">The Quiet Years</span><span class="order__d mono">2020 to 2022</span></a></li>
+      <li><a href="#peak"><span class="order__n">V</span><span class="order__name">199,999</span><span class="order__d mono">October 2022</span></a></li>
+      <li><a href="#autumn"><span class="order__n">VI</span><span class="order__name">The Last Autumn</span><span class="order__d mono">2024 to 2026</span></a></li>
+      <li><a href="#chains"><span class="order__n">VII</span><span class="order__name">Coda: The Chains</span><span class="order__d mono">2019 to 2026</span></a></li>
+      <li><a href="#ledger"><span class="order__n">&middot;</span><span class="order__name">The Ledger</span><span class="order__d mono">Brass plaques</span></a></li>
+      <li><a href="#farewell"><span class="order__n">&middot;</span><span class="order__name">Farewell</span><span class="order__d mono">Honk once</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- 0. Ignition -->
+<section class="chapter night" id="ignition" aria-labelledby="h-ignition" data-running="0 &middot; Ignition">
+  <div class="divider" aria-hidden="true"><span class="divider__num">0</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">Ignition<span class="divider__sep"> &middot; </span>31 August 2018</span></div>
+  <header class="chapter__head">
+    <h2 id="h-ignition" class="chapter__title">Ignition</h2>
+    <p class="dek">Every legend starts with a light on the dash.</p>
+  </header>
+  <div class="prose">
+    <p class="lead">Friday, 31 August 2018. A beige Corolla, built in the year 2000, leaves Mountain View with a new owner at the wheel.</p>
+    <p>He drives 80 miles that first day. Halfway, a light comes on. <span class="cel-word">Check engine.</span></p>
+    <p>It stays lit for about six weeks. Then, without explanation, it goes out.</p>
+  </div>
+  <figure class="dashshot">
+    <button type="button" class="ph__btn" data-lb="IMG_4444"><span class="vh">Enlarge photo: </span>
+      <img src="img/l/IMG_4444.jpg" srcset="img/s/IMG_4444.jpg 720w, img/l/IMG_4444.jpg 1280w, img/full/IMG_4444.jpg 2000w" sizes="(min-width: 1024px) 60rem, 100vw" width="1280" height="960" alt="Close-up of the Corolla's instrument cluster, the amber check-engine light lit on the right." loading="lazy" decoding="async">
+      <span class="dashshot__halo" aria-hidden="true"></span>
+    </button>
+    <figcaption><time>26 Jan 2025</time> Oakland. The instrument cluster, the check-engine light on.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>In January 2025, more than six years later, a photo of the dashboard shows it lit again.</p>
+    <p class="aside-line">Some lights are part of the car.</p>
+    <p>What follows is the life of that car with Tom. Close to eight years. California, Oregon and Nevada. More than 200,000 miles, and no one wrote down the last of them.</p>
+  </div>
+  <figure class="pq">
+    <blockquote><p>&ldquo;The engine light was on for ~6 weeks but it eventually turned off. I dont think anything was seriously wrong.&rdquo;</p></blockquote>
+    <figcaption>Tom, to Gil, 18 Nov 2018</figcaption>
+  </figure>
+</section>
+
+<!-- I. The Handshake -->
+<section class="chapter" id="handshake" aria-labelledby="h-handshake" data-running="I &middot; The Handshake" data-odo-start>
+  <div class="divider" aria-hidden="true"><span class="divider__num">I</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">The Handshake<span class="divider__sep"> &middot; </span>August 2018</span></div>
+  <header class="opener" data-kb>
+    <div class="opener__media"><img src="img/l/IMG_8737.jpg" srcset="img/s/IMG_8737.jpg 720w, img/l/IMG_8737.jpg 1280w, img/full/IMG_8737.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Three-quarter front view of the beige Corolla on a San Francisco street, row houses and stairs behind." style="object-position:50% 60%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>31 Aug 2018</time> <span class="cap">Evening, San Francisco. Purchase day.</span></p>
+    <div class="opener__title">
+      <h2 id="h-handshake" class="chapter__title">The Handshake <span class="chapter__date mono">August 2018</span></h2>
+      <p class="dek">A Craigslist ad, a test drive, and a full tank nobody asked for.</p>
+    </div>
+  </header>
+  <div class="prose">
+    <p class="lead"><span class="stamp mono" aria-hidden="true">25 Aug 2018</span> Saturday, 25 August 2018, 10:18 in the morning. Tom answers a Craigslist ad on the Peninsula board.</p>
+    <p>The seller is Gil, a Mountain View dad whose new Tesla Model 3 has just arrived.</p>
+    <p>They meet at 7 pm in Mountain View, in front of the Wells Fargo.</p>
+    <p>After the test drive, Tom finds it in good shape. A few things are off: the window, several bumps and dings. The suspension worries him. Gil answers with a discount and a joke.</p>
+  </div>
+  <figure class="pq pq--big">
+    <blockquote><p>&ldquo;If it were delayed another several years, I would drive my corolla longer with blaming Elon :)&rdquo;</p></blockquote>
+    <figcaption>Gil, 26 Aug 2018</figcaption>
+  </figure>
+  <figure class="pq pq--right">
+    <blockquote><p>&ldquo;I'm jealous about the Tesla but I know these old Toyotas are extremely reliable.&rdquo;</p></blockquote>
+    <figcaption>Tom, 26 Aug 2018</figcaption>
+  </figure>
+  <div class="prose">
+    <p>The price is $1,200, as is. Gil is honest about the sticky window.</p>
+    <p><span class="stamp mono" aria-hidden="true">Fri 31 Aug 2018</span> Friday, 31 August. Tom takes an Uber to Mountain View. Gil, on his way to meet him, stops at a gas station.</p>
+    <p class="aside-line">He fills the tank. He did not have to.</p>
+    <p>That evening he sends the service records too.</p>
+  </div>
+  <div class="pair">
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_8736"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_8736.jpg" srcset="img/s/IMG_8736.jpg 720w, img/l/IMG_8736.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Front view of the Corolla parked on a city street." loading="lazy" decoding="async"></button><figcaption><time>31 Aug 2018</time> <span class="cap">Evening, San Francisco. Purchase day.</span></figcaption></figure>
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_8739"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_8739.jpg" srcset="img/s/IMG_8739.jpg 720w, img/l/IMG_8739.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Interior through the driver&#x27;s door: beige cloth seats, the steering wheel and a floor mat that reads COROLLA." loading="lazy" decoding="async"></button><figcaption><time>1 Sep 2018</time> <span class="cap">San Francisco. The day Tom told his mom.</span></figcaption></figure>
+  </div>
+  <figure class="pq">
+    <blockquote><p>&ldquo;Good shopping. Having a car will give you more freedom to explore.&rdquo;</p></blockquote>
+    <figcaption>Mom, 2018</figcaption>
+  </figure>
+  <figure class="ph ph--narrow"><button type="button" class="ph__btn" data-lb="IMG_8806"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_8806.jpg" srcset="img/s/IMG_8806.jpg 720w, img/l/IMG_8806.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="A smiling woman in a red hooded jacket crouches by the car at night." loading="lazy" decoding="async"></button><figcaption><time>7 Sep 2018</time> <span class="cap">Night, San Francisco. DMV week.</span></figcaption></figure>
+</section>
+
+<!-- II. The Naming -->
+<section class="chapter" id="naming" aria-labelledby="h-naming" data-running="II &middot; The Naming" data-cel-off>
+  <div class="divider" aria-hidden="true"><span class="divider__num">II</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">The Naming<span class="divider__sep"> &middot; </span>Late 2018</span></div>
+  <header class="opener" data-kb>
+    <div class="opener__media"><img src="img/l/IMG_20181228_bodega.jpg" srcset="img/s/IMG_20181228_bodega.jpg 720w, img/l/IMG_20181228_bodega.jpg 1280w, img/full/IMG_20181228_bodega.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Three-quarter front view of the car on a gravel shore at golden hour, the harbour and hillside houses behind, the photographer&#x27;s long shadow on the left." style="object-position:50% 55%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>28 Dec 2018</time> <span class="cap">Bodega Bay, golden hour. Six days after the first &quot;beige stallion&quot; email.</span></p>
+    <div class="opener__title">
+      <h2 id="h-naming" class="chapter__title">The Naming <span class="chapter__date mono">Late 2018</span></h2>
+      <p class="dek">By Christmas, it had a name.</p>
+    </div>
+  </header>
+  <div class="prose">
+    <p class="lead">Two days after the purchase, it went to Mount Diablo.</p>
+    <p>Then it went out almost every weekend. Pacifica. Montara. Pescadero. San Juan Bautista. The redwoods at Boulder Creek and Big Basin.</p>
+    <p>When something broke, Tom fixed most of it himself, with cheap parts from Amazon.</p>
+    <p>In November, Gil mailed him the spare key.</p>
+  </div>
+  <figure class="pq pq--big">
+    <blockquote><p>&ldquo;I've been able to visit so much more of the bay area and beyond because of the car.&rdquo;</p></blockquote>
+    <figcaption>Tom, to Gil, 18 Nov 2018</figcaption>
+  </figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">22 Dec 2018</span> On 22 December 2018 the name appears in writing for the first time. Tom emails Nate a photo titled &ldquo;Anne, Mike, tree, and beige stallion&rdquo;. The message has no words in it. Most likely, the Christmas tree is riding on the car.</p>
+  </div>
+  <p class="nameplate" aria-hidden="true"><span>The</span> Beige Stallion</p>
+  <div class="prose">
+    <p>Six days later, it stood on the shore at Bodega Bay in the last of the light.</p>
+    <p><span class="stamp mono" aria-hidden="true">19 Jan 2019</span> In January he sends Brian a photo under the subject &ldquo;The beige stallion 2000 corolla&rdquo;, with an offer: &ldquo;Let me know when you want to trade.&rdquo;</p>
+  </div>
+  <figure class="pq pq--right">
+    <blockquote><p>&ldquo;Pimp your ride...&rdquo;</p></blockquote>
+    <figcaption>Brian, 19 Jan 2019</figcaption>
+  </figure>
+  <section class="strip-gallery" aria-labelledby="h-naming-photos">
+    <h3 id="h-naming-photos" class="gallery__title mono">The first autumn, in photographs</h3>
+    <div class="filmstrip" tabindex="0" role="group" aria-labelledby="h-naming-photos">
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_0022"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_0022.jpg" srcset="img/s/IMG_0022.jpg 720w, img/l/IMG_0022.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Rear three-quarter view of the car on a city street, the COROLLA badge on the trunk." loading="lazy" decoding="async"></button><figcaption><time>2 Nov 2018</time> <span class="cap">Potrero Hill, San Francisco.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="MVIMG_20181118_165123"><span class="vh">Enlarge photo: </span><img src="img/s/MVIMG_20181118_165123.jpg" srcset="img/s/MVIMG_20181118_165123.jpg 720w, img/l/MVIMG_20181118_165123.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="A smiling woman with a blue backpack and a suitcase beside the back of the car." loading="lazy" decoding="async"></button><figcaption><time>18 Nov 2018</time> <span class="cap">San Francisco.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="MVIMG_20181125_145455"><span class="vh">Enlarge photo: </span><img src="img/s/MVIMG_20181125_145455.jpg" srcset="img/s/MVIMG_20181125_145455.jpg 720w, img/l/MVIMG_20181125_145455.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car small on the roadside under tall sandstone bluffs and a deep blue sky." loading="lazy" decoding="async"></button><figcaption><time>25 Nov 2018</time> <span class="cap">Highway 1 near Montara.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="MVIMG_20181231_182759"><span class="vh">Enlarge photo: </span><img src="img/s/MVIMG_20181231_182759.jpg" srcset="img/s/MVIMG_20181231_182759.jpg 720w, img/l/MVIMG_20181231_182759.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="A parking meter in the foreground, the car&#x27;s nose behind it." loading="lazy" decoding="async"></button><figcaption><time>31 Dec 2018</time> <span class="cap">Night, South of Market, San Francisco. New Year&#x27;s Eve.</span></figcaption></figure>
+    </div>
+  </section>
+</section>
+
+<!-- III. The Roads -->
+<section class="chapter" id="roads" aria-labelledby="h-roads" data-running="III &middot; The Roads">
+  <div class="divider" aria-hidden="true"><span class="divider__num">III</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">The Roads<span class="divider__sep"> &middot; </span>2018 to 2022</span></div>
+  <header class="opener" data-kb>
+    <div class="opener__media"><img src="img/l/MVIMG_20190112_164908.jpg" srcset="img/s/MVIMG_20190112_164908.jpg 720w, img/l/MVIMG_20190112_164908.jpg 1280w, img/full/MVIMG_20190112_164908.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Rear three-quarter view of the car on desert gravel, snow on the far mountains, pink evening cloud." style="object-position:50% 60%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>12 Jan 2019</time> <span class="cap">Near Desert Hot Springs, pink evening cloud.</span></p>
+    <div class="opener__title">
+      <h2 id="h-roads" class="chapter__title">The Roads <span class="chapter__date mono">2018 to 2022</span></h2>
+      <p class="dek">California, Oregon and Nevada. Some of it certain, some of it likely, some of it possible.</p>
+    </div>
+  </header>
+  <div class="prose">
+    <p class="lead">In 2022 Tom told Gil he had taken the car &ldquo;all over California, Oregon, and Nevada.&rdquo;</p>
+    <p>Google Maps kept a monthly record from 2018 to 2024. From November 2019 a BMW wagon shared the road, so not every trip can be claimed. The map shows what is sure, what is very likely, and what is only possible.</p>
+  </div>
+
+  <div class="roads" id="roads-map">
+    <div class="roads__track">
+      <div class="roads__panel">
+        <div class="roads__caption">
+          <ul class="legend" aria-label="Map key">
+            <li><svg viewBox="0 0 40 8" aria-hidden="true"><path d="M2 4h36" class="ln ln--yes"/></svg>Yes</li>
+            <li><svg viewBox="0 0 40 8" aria-hidden="true"><path d="M2 4h36" class="ln ln--likely"/></svg>Very likely</li>
+            <li><svg viewBox="0 0 40 8" aria-hidden="true"><path d="M2 4h36" class="ln ln--possible"/></svg>Possible</li>
+            <li><svg viewBox="0 0 40 8" aria-hidden="true"><rect x="16" y="0" width="8" height="8" transform="rotate(45 20 4)" class="cam-key"/></svg>Photo</li>
+          </ul>
+          <div class="now" aria-live="polite">
+            <p class="now__count mono"><span id="now-count">Road 1 of 12</span></p>
+            <p class="now__dates mono" id="now-dates"></p>
+            <p class="now__name" id="now-name"></p>
+            <p class="now__cert" id="now-cert"></p>
+            <button type="button" class="btn btn--small" id="now-open" aria-describedby="now-name">Read more</button>
+          </div>
+          <p class="roads__hint">Tap the end of a line, or a photo pin, to read more.</p>
+        </div>
+        <div class="roads__map">
+          <svg id="map" viewBox="0 8 450 704" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">Map of the Corolla's roads</title>
+            <desc id="map-desc">California, Oregon and Nevada, with a line from San Francisco for each trip. Solid lines are certain, dashed lines very likely, dotted lines possible. A list of every road follows the map.</desc>
+          </svg>
+          <div class="roads__hit" id="map-hit" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="roll" aria-labelledby="h-roll">
+    <h3 id="h-roll" class="gallery__title mono">Every road and photo pin</h3>
+    <ol class="roll__list" id="roll-trips"></ol>
+    <ul class="roll__list roll__list--cams" id="roll-cams"></ul>
+    <noscript><p>The interactive map needs JavaScript. The roads are listed in the text above.</p></noscript>
+  </section>
+
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Jan 2019</span> January 2019: a long loop through Palm Springs, Los Angeles, Bakersfield and Arroyo Grande, with a stop at a Super 8 in Bakersfield. The story file says very likely; photos of the car near Desert Hot Springs on 12 January settle it.</p>
+  </div>
+  <figure class="pq">
+    <blockquote><p>&ldquo;Hey I'm in Palm Springs this weekend and driving back to SF...are you around?&rdquo;</p></blockquote>
+    <figcaption>Tom, to Jiajing, 12 Jan 2019</figcaption>
+  </figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Mar 2019</span> March 2019, very likely: South Lake Tahoe, new chains in the trunk.</p>
+    <p><span class="stamp mono" aria-hidden="true">Jul 2019</span> July 2019, very likely: the Mendocino coast, Philo, then Fort Bragg.</p>
+    <p><span class="stamp mono" aria-hidden="true">Aug 2019</span> August 2019, possibly: Oregon, and Black Butte Ranch near Sisters.</p>
+    <p><span class="stamp mono" aria-hidden="true">2020 to 2021</span> Possible, between 2020 and 2021: Yosemite, Emerald Bay and Washoe Lake, Big Sur and the elephant seals.</p>
+  </div>
+  <figure class="pq pq--right">
+    <blockquote><p>&ldquo;You've got to try the beige stallion, though...we can drive it to the beach or something.&rdquo;</p></blockquote>
+    <figcaption>Tom, to Nate, 4 Jun 2019</figcaption>
+  </figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Oct 2021</span> October 2021, certain: south to Indio, for a friend's wedding.</p>
+  </div>
+  <figure class="pq pq--big">
+    <blockquote><p>&ldquo;Plan to rip it down there in the Corolla tomorrow.&rdquo;</p></blockquote>
+    <figcaption>Tom, 28 Oct 2021</figcaption>
+  </figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Feb 2022</span> February 2022, certain: the North Coast. On 26 February the little beige car stood on a dirt road at the foot of the giant redwoods of Jedediah Smith, near Crescent City.</p>
+  </div>
+  <figure class="moment" data-reveal><div class="moment__frame"><button type="button" class="ph__btn" data-lb="IMG_8860"><span class="vh">Enlarge photo: </span><img src="img/l/IMG_8860.jpg" srcset="img/s/IMG_8860.jpg 720w, img/l/IMG_8860.jpg 1280w, img/full/IMG_8860.jpg 2000w" sizes="(min-width: 1024px) 60vh, 100vw" width="960" height="1280" alt="The small beige car parked on a dirt road at the foot of enormous redwoods and ferns." loading="lazy" decoding="async"></button></div><figcaption><time>26 Feb 2022</time> <span class="cap">Jedediah Smith Redwoods, near Crescent City.</span></figcaption></figure>
+  <section class="strip-gallery" aria-labelledby="h-roads-photos">
+    <h3 id="h-roads-photos" class="gallery__title mono">On the road, in photographs</h3>
+    <div class="filmstrip" tabindex="0" role="group" aria-labelledby="h-roads-photos">
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_3310"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_3310.jpg" srcset="img/s/IMG_3310.jpg 720w, img/l/IMG_3310.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Driver&#x27;s-seat view through the windscreen: the dashboard, a coastal ridge road, the ocean far off." loading="lazy" decoding="async"></button><figcaption><time>7 Mar 2021</time> <span class="cap">Mount Tamalpais, Marin. The view from the driver&#x27;s seat.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_6967"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_6967.jpg" srcset="img/s/IMG_6967.jpg 720w, img/l/IMG_6967.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car in a stone-paved driveway by a garage and a garden wall." loading="lazy" decoding="async"></button><figcaption><time>15 Oct 2021</time> <span class="cap">Tiburon.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="PXL_20211128_011624331"><span class="vh">Enlarge photo: </span><img src="img/s/PXL_20211128_011624331.jpg" srcset="img/s/PXL_20211128_011624331.jpg 720w, img/l/PXL_20211128_011624331.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="542" alt="Close on the hood and the glowing amber parking light, a cruise ship on the bay, an orange sky." loading="lazy" decoding="async"></button><figcaption><time>27 Nov 2021</time> <span class="cap">Sunset, Marin Headlands. Thanksgiving weekend.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_8849"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_8849.jpg" srcset="img/s/IMG_8849.jpg 720w, img/l/IMG_8849.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The rear bench seat and, through the back window, ferns and forest." loading="lazy" decoding="async"></button><figcaption><time>26 Feb 2022</time> <span class="cap">Jedediah Smith Redwoods, looking back from inside.</span></figcaption></figure>
+      <figure class="ph ph--tall "><button type="button" class="ph__btn" data-lb="IMG_8777"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_8777.jpg" srcset="img/s/IMG_8777.jpg 720w, img/l/IMG_8777.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="540" height="720" alt="The car parked by a small wooden cabin under huge redwoods, a person on the cabin steps." loading="lazy" decoding="async"></button><figcaption><time>26 Feb 2022</time> <span class="cap">Jedediah Smith Redwoods.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_5509"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_5509.jpg" srcset="img/s/IMG_5509.jpg 720w, img/l/IMG_5509.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car on a dirt lot with cypress trees and dry golden hills." loading="lazy" decoding="async"></button><figcaption><time>2 Jul 2023</time> <span class="cap">Near Tomales, Marin coast.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_2721"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_2721.jpg" srcset="img/s/IMG_2721.jpg 720w, img/l/IMG_2721.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car at a coastal pull-out among other cars, a few people by the road." loading="lazy" decoding="async"></button><figcaption><time>19 Oct 2024</time> <span class="cap">Point Reyes area.</span></figcaption></figure>
+      <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_2757"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_2757.jpg" srcset="img/s/IMG_2757.jpg 720w, img/l/IMG_2757.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Two men in black stand by the car, one pointing at it." loading="lazy" decoding="async"></button><figcaption><time>19 Oct 2024</time> <span class="cap">A Marin ridge road.</span></figcaption></figure>
+    </div>
+  </section>
+</section>
+
+<!-- IV. The Quiet Years -->
+<section class="chapter" id="quiet" aria-labelledby="h-quiet" data-running="IV &middot; The Quiet Years">
+  <div class="divider" aria-hidden="true"><span class="divider__num">IV</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">The Quiet Years<span class="divider__sep"> &middot; </span>2020 to 2022</span></div>
+  <header class="opener" data-kb>
+    <div class="opener__media"><img src="img/l/IMG_20200209_174233.jpg" srcset="img/s/IMG_20200209_174233.jpg 720w, img/l/IMG_20200209_174233.jpg 1280w, img/full/IMG_20200209_174233.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Side view of the car among boulders and grass in evening light." style="object-position:50% 60%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>9 Feb 2020</time> <span class="cap">Evening, a lot under a freeway, Mission Bay area, San Francisco.</span></p>
+    <div class="opener__title">
+      <h2 id="h-quiet" class="chapter__title">The Quiet Years <span class="chapter__date mono">2020 to 2022</span></h2>
+      <p class="dek">Fewer roads, more repairs, and a sale ad that never ran.</p>
+    </div>
+  </header>
+  <div class="prose">
+    <p class="lead"><span class="stamp mono" aria-hidden="true">Dec 2019</span> In December 2019, a $10 to $15 can of Seafoam engine cleaner made the old engine run smoother. Tom called it &ldquo;really night and day.&rdquo;</p>
+    <p><span class="stamp mono" aria-hidden="true">Apr 2020</span> April 2020. The car logs 356 miles in the month, mostly Pacifica and grocery runs to Daly City.</p>
+  </div>
+  <div class="pair">
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_0493"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_0493.jpg" srcset="img/s/IMG_0493.jpg 720w, img/l/IMG_0493.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Hood up, a man in a blue shirt leans deep into the engine bay." loading="lazy" decoding="async"></button><figcaption><time>31 Mar 2019</time> <span class="cap">South of Market, San Francisco. Fixing it, as ever.</span></figcaption></figure>
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="MVIMG_20190804_172651"><span class="vh">Enlarge photo: </span><img src="img/s/MVIMG_20190804_172651.jpg" srcset="img/s/MVIMG_20190804_172651.jpg 720w, img/l/MVIMG_20190804_172651.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car up on a floor jack outside a workshop wall, a man working under the front wheel." loading="lazy" decoding="async"></button><figcaption><time>4 Aug 2019</time> <span class="cap">San Jose area. Repairs.</span></figcaption></figure>
+  </div>
+  <figure class="pq pq--right">
+    <blockquote><p>&ldquo;My Toyota is pretty great honestly. Parts are insanely cheap and it drives good.&rdquo;</p></blockquote>
+    <figcaption>Tom, to Mom, 17 Aug 2020</figcaption>
+  </figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Nov 2020</span> In November 2020, two years in, Tom wrote to Gil. He might sell the car, he said, and hoped to pass it on with a full tank.</p>
+  </div>
+  <figure class="pq pq--big">
+    <blockquote><p>&ldquo;it's definitely one of the best things I've ever bought. It let me discover California and I put a ton of miles on it&rdquo;</p></blockquote>
+    <figcaption>Tom, to Gil, 14 Nov 2020</figcaption>
+  </figure>
+  <figure class="pq">
+    <blockquote><p>&ldquo;I never imagined people could continue connections after selling/buying cars in Craig list, but this has been fun with you.&rdquo;</p></blockquote>
+    <figcaption>Gil, from Korea, 15 Nov 2020</figcaption>
+  </figure>
+  <div class="prose">
+    <p>Julia drafted the ad. Three months later he reworked it and added a Bluetooth adapter. No sale followed.</p>
+  </div>
+
+  <aside class="classified" aria-labelledby="h-ad">
+    <div class="classified__paper">
+      <p class="classified__rubric mono">Autos for sale &middot; 2020</p>
+      <h3 id="h-ad" class="classified__head">For Sale</h3>
+      <p class="classified__body">&ldquo;2000 Toyota Corolla. Very reliable. Bought with 150,000 miles 2 years ago and well taken care of. Never been in an accident.&rdquo; &ldquo;Radio sounds surprisingly good. Sun visor on passenger side broke. Some dents on the doors from parking on city streets.&rdquo; &ldquo;Runs strong and quiet! Very fuel-efficient (36-40 mpg) on our mostly highway trips. Consistently uses about one quart of oil every 3,000 miles since I bought it. AC blows very cold and heater works well.&rdquo; &ldquo;Comes with snow chains and used to make the trip to Tahoe several times, including in the winter.&rdquo;</p>
+      <p class="classified__foot mono">Drafted by Julia, 15 Nov 2020. Never ran.</p>
+      <span class="classified__stamp" aria-hidden="true">Never ran</span>
+    </div>
+  </aside>
+
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Mar 2022</span> In March 2022, instead of selling, he ordered four complete strut and spring assemblies. They came in two boxes.</p>
+    <p><span class="stamp mono" aria-hidden="true">May 2022</span> In May 2022 the BMW left the insurance policy. The $1,200 Corolla stayed on for more than four years after it.</p>
+  </div>
+  <div class="pair">
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_20200105_162307"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_20200105_162307.jpg" srcset="img/s/IMG_20200105_162307.jpg 720w, img/l/IMG_20200105_162307.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Front view of the car in a small lot under a freeway, agave and grasses around it." loading="lazy" decoding="async"></button><figcaption><time>5 Jan 2020</time> <span class="cap">Mission Bay area, San Francisco.</span></figcaption></figure>
+    <figure class="ph "><button type="button" class="ph__btn" data-lb="IMG_20200114_073117"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_20200114_073117.jpg" srcset="img/s/IMG_20200114_073117.jpg 720w, img/l/IMG_20200114_073117.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Interior: beige seats, the steering wheel, a phone in a dash mount." loading="lazy" decoding="async"></button><figcaption><time>14 Jan 2020</time> <span class="cap">7:31 am, San Francisco.</span></figcaption></figure>
+  </div>
+  <figure class="ph ph--narrow"><button type="button" class="ph__btn" data-lb="IMG_20200209_174256"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_20200209_174256.jpg" srcset="img/s/IMG_20200209_174256.jpg 720w, img/l/IMG_20200209_174256.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="Head-on view of the car among boulders and grass." loading="lazy" decoding="async"></button><figcaption><time>9 Feb 2020</time> <span class="cap">Evening, the same lot under the freeway.</span></figcaption></figure>
+</section>
+
+<!-- V. 199,999 -->
+<section class="chapter night peak" id="peak" aria-labelledby="h-peak" data-running="V &middot; 199,999">
+  <div class="peak__stage" id="peak-stage">
+    <span class="peak__glow" aria-hidden="true"></span>
+    <div class="divider" aria-hidden="true"><span class="divider__num">V</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">199,999<span class="divider__sep"> &middot; </span>October 2022</span></div>
+    <h2 id="h-peak" class="peak__title"><span class="vh">199,999</span>
+      <span class="bigodo" id="bigodo" aria-hidden="true"></span>
+    </h2>
+    <p class="dek">The odometer rolls over. The photo catches the mile before.</p>
+  </div>
+  <div class="prose">
+    <p class="lead"><span class="stamp mono" aria-hidden="true">13 Oct 2022</span> On or about 13 October 2022, the Corolla passed 200,000 miles. About 50,000 of them came after Tom bought it.</p>
+    <p>At 12:53 in the morning, he wrote to Gil, with a photo of the odometer.</p>
+  </div>
+  <div class="letters">
+    <article class="letter" aria-label="Tom to Gil, October 2022">
+      <p class="letter__date mono">October 2022 &middot; 12:53 am</p>
+      <p>&ldquo;the Corolla hit 200 000 miles today! I've taken it all over California, Oregon, and Nevada and still have a ton of places to go.&rdquo;</p>
+      <p>&ldquo;I still am grateful for you filling up that gas tank before selling me the car. You really didn't have to do that!&rdquo;</p>
+      <p class="letter__sig"><span class="letter__line" aria-hidden="true"></span>Tom, to Gil</p>
+    </article>
+    <article class="letter letter--reply" aria-label="Gil to Tom, 15 January 2023">
+      <p class="letter__date mono">15 January 2023</p>
+      <p class="letter__big">&ldquo;Wow, it's amazing to see 199999!&rdquo;</p>
+      <p class="letter__sig"><span class="letter__line" aria-hidden="true"></span>Gil, to Tom</p>
+    </article>
+  </div>
+  <div class="prose">
+    <p>He had meant to sell it. Instead he had put about $800 of parts into it, new tires included.</p>
+    <p>Gil answered three months later, back in Mountain View, in the same house. He saw what the photo showed: 199,999, the last mile before the rollover.</p>
+  </div>
+  <div class="prose">
+    <p>He suggested coffee or lunch, once the rain was over. Whether that coffee happened is not recorded.</p>
+    <p class="aside-line" data-odo-end>After this, the odometer goes quiet. The car kept going. No one wrote down how far.</p>
+  </div>
+</section>
+
+<!-- VI. The Last Autumn -->
+<section class="chapter" id="autumn" aria-labelledby="h-autumn" data-running="VI &middot; The Last Autumn">
+  <div class="divider" aria-hidden="true"><span class="divider__num">VI</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">The Last Autumn<span class="divider__sep"> &middot; </span>2024 to 2026</span></div>
+  <header class="opener" data-kb>
+    <div class="opener__media"><img src="img/l/IMG_2273.jpg" srcset="img/s/IMG_2273.jpg 720w, img/l/IMG_2273.jpg 1280w, img/full/IMG_2273.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Side view of the car on a gravel lot under tall pines and an oak, blue sky." style="object-position:50% 62%" decoding="async" loading="lazy"></div><p class="opener__cap"><time>31 Aug 2024</time> <span class="cap">Angels Camp, Gold Country. Six years to the day after the purchase.</span></p>
+    <div class="opener__title">
+      <h2 id="h-autumn" class="chapter__title">The Last Autumn <span class="chapter__date mono">2024 to 2026</span></h2>
+      <p class="dek">Door handles, sensors, and two trucks that never came.</p>
+    </div>
+  </header>
+  <div class="prose">
+    <p class="lead"><span class="stamp mono" aria-hidden="true">Jun 2024</span> June 2024. Still fixing it. Interior door handles, $12.37.</p>
+    <p><span class="stamp mono" aria-hidden="true">31 Aug 2024</span> 31 August 2024, six years to the day after the handshake, it stands under the pines at Angels Camp, in Gold Country.</p>
+  </div>
+  <figure class="ph ph--narrow"><button type="button" class="ph__btn" data-lb="IMG_2277"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_2277.jpg" srcset="img/s/IMG_2277.jpg 720w, img/l/IMG_2277.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="A woman shading her eyes, leaning against the car." loading="lazy" decoding="async"></button><figcaption><time>31 Aug 2024</time> <span class="cap">Angels Camp.</span></figcaption></figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Nov 2024</span> Thanksgiving weekend 2024, it is in Big Sur, parked among the oaks.</p>
+  </div>
+  <figure class="ph ph--wide"><button type="button" class="ph__btn" data-lb="IMG_3464"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_3464.jpg" srcset="img/s/IMG_3464.jpg 720w, img/l/IMG_3464.jpg 1280w" sizes="(min-width: 1024px) 46rem, 100vw" width="720" height="540" alt="The car parked in an oak woodland campground, dappled light." loading="lazy" decoding="async"></button><figcaption><time>29 Nov 2024</time> <span class="cap">Big Sur. Thanksgiving weekend.</span></figcaption></figure>
+  <div class="prose">
+    <p><span class="stamp mono" aria-hidden="true">Dec 2024</span> December 2024. A 2006 Acura MDX joins the household. The Corolla stays on the policy.</p>
+    <p><span class="stamp mono" aria-hidden="true">Aug 2025</span> August 2025. The Corolla is towed from a construction zone in San Francisco.</p>
+    <p><span class="stamp mono" aria-hidden="true">Oct 2025</span> October 2025. An oxygen sensor and two kinds of cleaner arrive from Amazon. Possibly one last try at passing smog.</p>
+  </div>
+
+  <section class="seq night" id="seq" aria-labelledby="h-seq">
+    <div class="seq__intro prose">
+      <h3 id="h-seq" class="seq__title">Under Sutro Tower</h3>
+      <p>From October to Christmas Eve 2025, it is photographed where it is parked, under Sutro Tower. Again and again. By day, by streetlight, in the fog.</p>
+    </div>
+    <div class="seq__track" id="seq-track">
+      <div class="seq__sticky">
+        <div class="seq__stage">
+          <div class="seq__frame"><img class="seq__img seq__img--a" alt=""><img class="seq__img seq__img--b" alt=""></div>
+          <p class="seq__date" aria-hidden="true"><span class="seq__day mono" id="seq-date"></span><span class="seq__what" id="seq-what"></span><span class="seq__count mono" id="seq-count"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="seq__sheet">
+      <h4 class="seq__sheet-title mono" id="h-sheet">October to Christmas Eve 2025</h4>
+      <ol class="seq__grid" id="seq-grid" aria-labelledby="h-sheet">
+<li class="seq__item" data-i="0"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_0792"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_0792.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view on a quiet, tree-lined hill street." loading="lazy" decoding="async"></button><figcaption><time>4 Oct 2025</time> <span class="seq__cap">Rear view on a quiet, tree-lined hill street.</span></figcaption></figure></li>
+<li class="seq__item" data-i="1"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_0932"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_0932.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Front three-quarter view under a streetlight, the photographer&#x27;s shadow on the road." loading="lazy" decoding="async"></button><figcaption><time>7 Oct 2025</time> <span class="seq__cap">Night. Front three-quarter view under a streetlight, the photographer&#x27;s shadow on the road.</span></figcaption></figure></li>
+<li class="seq__item" data-i="2"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1156"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1156.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Seen through another car&#x27;s side window, parked against a hedge." loading="lazy" decoding="async"></button><figcaption><time>18 Oct 2025</time> <span class="seq__cap">Seen through another car&#x27;s side window, parked against a hedge.</span></figcaption></figure></li>
+<li class="seq__item" data-i="3"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1275"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1275.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. A paper notice under the windscreen wiper." loading="lazy" decoding="async"></button><figcaption><time>27 Oct 2025</time> <span class="seq__cap">Night. A paper notice under the windscreen wiper.</span></figcaption></figure></li>
+<li class="seq__item" data-i="4"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1348"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1348.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Front close-up by the kerb, dust on the paint." loading="lazy" decoding="async"></button><figcaption><time>2 Nov 2025</time> <span class="seq__cap">Front close-up by the kerb, dust on the paint.</span></figcaption></figure></li>
+<li class="seq__item" data-i="5"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1349"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1349.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Side close-up by the kerb, dust on the paint." loading="lazy" decoding="async"></button><figcaption><time>2 Nov 2025</time> <span class="seq__cap">Side close-up by the kerb, dust on the paint.</span></figcaption></figure></li>
+<li class="seq__item" data-i="6"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1458"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1458.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Streetlights down the hill." loading="lazy" decoding="async"></button><figcaption><time>9 Nov 2025</time> <span class="seq__cap">Night. Streetlights down the hill.</span></figcaption></figure></li>
+<li class="seq__item" data-i="7"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1477"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1477.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Pastel houses behind." loading="lazy" decoding="async"></button><figcaption><time>12 Nov 2025</time> <span class="seq__cap">Night. Pastel houses behind.</span></figcaption></figure></li>
+<li class="seq__item" data-i="8"><figure class="ph ph--seq ph--tall"><button type="button" class="ph__btn" data-lb="IMG_1528"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1528.jpg" width="540" height="720" alt="The beige Corolla parked under Sutro Tower, San Francisco. Sutro Tower overhead, the car at the kerb." loading="lazy" decoding="async"></button><figcaption><time>16 Nov 2025</time> <span class="seq__cap">Sutro Tower overhead, the car at the kerb.</span></figcaption></figure></li>
+<li class="seq__item" data-i="9"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1620"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1620.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view, the street falling away below." loading="lazy" decoding="async"></button><figcaption><time>26 Nov 2025</time> <span class="seq__cap">Night. Rear view, the street falling away below.</span></figcaption></figure></li>
+<li class="seq__item" data-i="10"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1621"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1621.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view, the street falling away below." loading="lazy" decoding="async"></button><figcaption><time>26 Nov 2025</time> <span class="seq__cap">Night. Rear view, the street falling away below.</span></figcaption></figure></li>
+<li class="seq__item" data-i="11"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1694"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1694.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Side view by a white fence." loading="lazy" decoding="async"></button><figcaption><time>1 Dec 2025</time> <span class="seq__cap">Side view by a white fence.</span></figcaption></figure></li>
+<li class="seq__item" data-i="12"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1696"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1696.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Side view by a white fence, Sutro Tower above." loading="lazy" decoding="async"></button><figcaption><time>1 Dec 2025</time> <span class="seq__cap">Side view by a white fence, Sutro Tower above.</span></figcaption></figure></li>
+<li class="seq__item" data-i="13"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1728"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1728.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Fog and a single streetlight." loading="lazy" decoding="async"></button><figcaption><time>7 Dec 2025</time> <span class="seq__cap">Night. Fog and a single streetlight.</span></figcaption></figure></li>
+<li class="seq__item" data-i="14"><figure class="ph ph--seq"><button type="button" class="ph__btn" data-lb="IMG_1743"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1743.jpg" width="720" height="540" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view under bright light, a long row of parked cars." loading="lazy" decoding="async"></button><figcaption><time>11 Dec 2025</time> <span class="seq__cap">Night. Rear view under bright light, a long row of parked cars.</span></figcaption></figure></li>
+<li class="seq__item" data-i="15"><figure class="ph ph--seq ph--tall"><button type="button" class="ph__btn" data-lb="IMG_1769"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1769.jpg" width="540" height="720" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view, blue sky, a red tree on the hill." loading="lazy" decoding="async"></button><figcaption><time>14 Dec 2025</time> <span class="seq__cap">Rear view, blue sky, a red tree on the hill.</span></figcaption></figure></li>
+<li class="seq__item" data-i="16"><figure class="ph ph--seq ph--tall"><button type="button" class="ph__btn" data-lb="IMG_1820"><span class="vh">Enlarge photo: </span><img src="img/s/IMG_1820.jpg" width="540" height="720" alt="The beige Corolla parked under Sutro Tower, San Francisco. Rear view, soft cloud, a palm on the hill. Christmas Eve, seven years after the first &quot;beige stallion&quot; Christmas." loading="lazy" decoding="async"></button><figcaption><time>24 Dec 2025</time> <span class="seq__cap">Rear view, soft cloud, a palm on the hill. Christmas Eve, seven years after the first &quot;beige stallion&quot; Christmas.</span></figcaption></figure></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="prose ending">
+    <p class="lead"><span class="stamp mono" aria-hidden="true">Jul 2026</span> July 2026. An online scrap offer: $190. Tom accepts. The insurer asks for a final odometer reading. There is no sign one was sent.</p>
+  </div>
+  <figure class="pq pq--small">
+    <blockquote><p>&ldquo;Our pickup partner is excited to come grab your 2000 Toyota Corolla and pay you the $190.&rdquo;</p></blockquote>
+    <figcaption>Peddle, 12 Jul 2026</figcaption>
+  </figure>
+  <div class="prose">
+    <p>The first pickup is cancelled. A second buyer offers the same. The pickup is cancelled again.</p>
+  </div>
+  <figure class="pq pq--small pq--right">
+    <blockquote><p>&ldquo;up to 190 for your 2000 Toyota Corolla VE!&rdquo;</p></blockquote>
+    <figcaption>The Clunker Junker, 13 Jul 2026</figcaption>
+  </figure>
+  <div class="prose">
+    <p>Then the emails stop. In mid-July 2026 it went to a scrap yard. Tom was paid $110 in cash.</p>
+    <p>With the check-engine light fixed, it would have been worth about $3,000. He tried hard.</p>
+  </div>
+  <figure class="pq pq--big">
+    <blockquote><p>&ldquo;I got $110 in cash instead of $3k if I had been able to fix the engine light (I tried hard!!!)&rdquo;</p></blockquote>
+    <figcaption>Tom, 3 Nov 2026</figcaption>
+  </figure>
+  <div class="prose">
+    <p class="return-light" id="return-light" data-cel-on><svg class="return-light__lamp" aria-hidden="true"><use href="#i-check"/></svg><span>The light that came on on the very first day was the one that ended it.</span></p>
+    <p>It had one more ride in it. About two weeks later, a phone call: the yard had sold it to someone new, and the car had been totalled.</p>
+  </div>
+  <p class="ceremony"><span>There was no ceremony.</span> <span>This is the ceremony.</span></p>
+</section>
+
+<!-- VII. Coda -->
+<section class="chapter coda" id="chains" aria-labelledby="h-chains" data-running="VII &middot; Coda: The Chains">
+  <div class="divider" aria-hidden="true"><span class="divider__num">VII</span><svg class="divider__orn" viewBox="-36 0 112 12" aria-hidden="true"><path d="M20 1l5 5-5 5-5-5z"/><path d="M-30 6h44M26 6h44"/><circle cx="-33" cy="6" r="1.3"/><circle cx="73" cy="6" r="1.3"/></svg><span class="divider__label mono">Coda: The Chains<span class="divider__sep"> &middot; </span>2019 to 2026</span></div>
+  <header class="chapter__head">
+    <h2 id="h-chains" class="chapter__title">Coda: The Chains</h2>
+    <p class="dek">Bought for Tahoe. Taken to Tahoe. Never put on.</p>
+  </header>
+  <div class="coda__grid">
+    <div class="prose">
+      <p class="lead"><span class="stamp mono" aria-hidden="true">Feb 2019</span> In February 2019, before the first snow trip, Tom ordered a set of KONIG CB-12 snow chains.</p>
+      <p><span class="stamp mono" aria-hidden="true">Sep 2026</span> In September 2026, after the car was gone, he listed a set of CB-12 chains on Facebook Marketplace for $50.</p>
+      <p>They had been to Tahoe once. They had never been mounted. They do not fit the new car's 18-inch wheels.</p>
+      <p>Likely, they are the same chains.</p>
+      <p class="aside-line">They never touched the road.</p>
+      <p>In 2018 Tom said his next car would be electric. In 2026 he drives a Honda Civic Hybrid. Halfway there.</p>
+    </div>
+    <div class="coda__quotes">
+      <figure class="pq pq--note">
+        <blockquote><p>&ldquo;DON'T FORGET CHAINS!!!!&rdquo;</p></blockquote>
+        <figcaption>Tom, note to self, 15 Feb 2019</figcaption>
+      </figure>
+      <figure class="pq">
+        <blockquote><p>&ldquo;Comes with snow chains and used to make the trip to Tahoe several times, including in the winter.&rdquo;</p></blockquote>
+        <figcaption>The 2020 sale ad, drafted by Julia, 15 Nov 2020</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- The Ledger -->
+<section class="ledger night" id="ledger" aria-labelledby="h-ledger" data-running="The Ledger">
+  <div class="ledger__inner">
+    <h2 id="h-ledger" class="ledger__title">The Ledger</h2>
+    <ul class="plaques">
+      <li class="plaque"><p class="plaque__v"><span data-count="1200" data-prefix="$" data-sep="1">$1,200</span></p><p class="plaque__l">Paid, August 2018</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="110" data-prefix="$">$110</span></p><p class="plaque__l">Paid in cash by the scrap yard, July 2026</p></li>
+      <li class="plaque"><p class="plaque__v"><small>about</small> <span data-count="3000" data-prefix="$" data-sep="1">$3,000</span></p><p class="plaque__l">What it was worth with the light fixed</p></li>
+      <li class="plaque"><p class="plaque__v"><small>about</small> <span data-count="50000" data-sep="1">50,000</span></p><p class="plaque__l">Miles in the first four years</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="27.6" data-dec="1">27.6</span></p><p class="plaque__l">mpg on an early tank, Sept 2018</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="1">1</span></p><p class="plaque__l">Quart of oil every 3,000 miles</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="12.37" data-dec="2" data-prefix="$">$12.37</span></p><p class="plaque__l">Interior door handles, 2024</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="4">4</span></p><p class="plaque__l">Strut assemblies ordered, 2022</p></li>
+      <li class="plaque"><p class="plaque__v"><span data-count="2">2</span></p><p class="plaque__l">Scrap pickups cancelled</p></li>
+      <li class="plaque"><p class="plaque__v"><span>0</span></p><p class="plaque__l">Accidents. &ldquo;Never been in an accident.&rdquo; The 2020 ad</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Price in Corollas -->
+<section class="corollas" id="corollas" aria-labelledby="h-corollas" data-running="Price in Corollas">
+  <div class="corollas__inner">
+    <h2 id="h-corollas" class="corollas__title">Price in Corollas</h2>
+    <p class="corollas__intro">In November 2019 a Whistler rental came in at about $4,800. Tom did the math: &ldquo;it's exactly the cost of four toyota corollas.&rdquo;</p>
+    <p class="corollas__intro">Type any price. We'll count it in Corollas, at $1,200 each.</p>
+    <form class="corollas__form" id="corollas-form" novalidate>
+      <label for="price" class="vh">Price in dollars</label>
+      <span class="corollas__dollar" aria-hidden="true">$</span>
+      <input id="price" name="price" type="text" inputmode="decimal" autocomplete="off" placeholder="Enter a price in dollars">
+    </form>
+    <p class="corollas__out" id="corollas-out" aria-live="polite"></p>
+    <div class="corollas__cars" id="corollas-cars" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- In their words -->
+<section class="words" id="words" aria-labelledby="h-words" data-running="In their words">
+  <div class="words__inner">
+    <h2 id="h-words" class="words__title">In their words</h2>
+    <ul class="words__wall">
+      <li><figure><blockquote><p>&ldquo;The car drives smoothly and the brakes are strong.&rdquo;</p></blockquote><figcaption>Tom, to Gil, 31 Aug 2018</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;I am not a fortune teller but I have a confidence you will be able to upgrade your car much faster than I did.&rdquo; &ldquo;Wish the best in your career and life.&rdquo;</p></blockquote><figcaption>Gil, 31 Aug 2018</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;Good shopping. Having a car will give you more freedom to explore.&rdquo;</p></blockquote><figcaption>Mom, 2018</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;Wow. They're in SF, right. Awe. Merry Christmas!&rdquo;</p></blockquote><figcaption>Nate, Dec 2018</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;Mine is so smooth and feels much faster and newer.&rdquo;</p></blockquote><figcaption>Tom, to Jesse, Dec 2019</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;I was so happy that you filled it up after we agreed on $1200 for the price - that let me have confidence in the car knowing that you're a very honest person.&rdquo;</p></blockquote><figcaption>Tom, to Gil, 14 Nov 2020</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;Runs strong and quiet!&rdquo;</p></blockquote><figcaption>The 2020 sale ad, drafted by Julia</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;All that to say, life is pretty good and (apparently) we don't need a fancy car to live it up in the Bay Area!&rdquo;</p></blockquote><figcaption>Tom, to Gil, Oct 2022</figcaption></figure></li>
+      <li><figure><blockquote><p>&ldquo;I also didn't expect to keep in touch at all when I bought the car!&rdquo;</p></blockquote><figcaption>Tom, to Gil, Oct 2022</figcaption></figure></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Farewell -->
+<section class="farewell night" id="farewell" aria-labelledby="h-farewell" data-running="Farewell">
+  <div class="farewell__media" id="farewell-media">
+    <img src="img/l/IMG_8268.jpg" srcset="img/s/IMG_8268.jpg 720w, img/l/IMG_8268.jpg 1280w, img/full/IMG_8268.jpg 2000w" sizes="100vw" width="1280" height="960" alt="Side profile of the car on a clifftop pull-out, the Pacific behind, sunbeams through heavy cloud." loading="lazy" decoding="async">
+  </div>
+  <div class="epitaph">
+    <p class="epitaph__rule mono" aria-hidden="true">&#10070;</p>
+    <h2 id="h-farewell" class="epitaph__name">The Beige Stallion. <span>2000 to 2026.</span></h2>
+    <p class="epitaph__line">Final mileage unknown.</p>
+    <p class="epitaph__quote">&ldquo;still have a ton of places to go.&rdquo;</p>
+    <p class="epitaph__by mono">Tom, to Gil, Oct 2022</p>
+    <div class="honk">
+      <button type="button" class="btn btn--honk" id="honk">Honk once</button>
+      <p class="honk__count mono" aria-live="polite"><span id="honk-n">0</span> <span id="honk-word">honks</span></p>
+    </div>
+    <p class="epitaph__last" id="last-line" hidden>Some lights are part of the car.</p>
+  </div>
+  <p class="farewell__cap"><time>2 Jan 2022</time> The San Mateo coast near Pescadero.</p>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__ded">For a beige 2000 Toyota Corolla, 2018 to 2026, and for Gil, who filled the tank.</p>
+  <p class="footer__credits">Music: Goin' Home (Dvorak), performed by the US Air Force Band, public domain. Map outline: US Census Bureau, public domain. Type: Cormorant Garamond, Source Serif 4 and IBM Plex Mono, SIL Open Font License.</p>
+</footer>
+
+<dialog class="card" id="card" aria-labelledby="card-title">
+  <div class="card__body" id="card-body"></div>
+  <button type="button" class="card__close" id="card-close">Close</button>
+</dialog>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo">
+  <figure class="lightbox__fig">
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button type="button" class="lightbox__close" id="lb-close">Close</button>
+</dialog>
+
+<audio id="anthem" src="audio/anthem.mp3" preload="none" loop></audio>
+
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
