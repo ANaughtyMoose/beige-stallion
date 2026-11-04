@@ -373,7 +373,13 @@
       homeEls[2].setAttribute('text-anchor', homeLeft ? 'start' : 'end');
       homeEls[2].style.fontSize = (10 * k) + 'px'; homeEls[2].style.strokeWidth = (6 * k) + 'px';
     }
-    stateLabels.forEach(function (t) { t.style.fontSize = (11.5 * k) + 'px'; t.style.strokeWidth = (5 * k) + 'px'; });
+    stateLabels.forEach(function (t) {
+      t.style.fontSize = (11.5 * k) + 'px'; t.style.strokeWidth = (5 * k) + 'px';
+      // hide a state name the camera would cut in half at the map edge
+      var half = t.textContent.length * 11.5 * k * 0.47, x = +t.getAttribute('x'), y = +t.getAttribute('y');
+      var fits = x - half > vb[0] && x + half < vb[0] + vb[2] && y - 8 * k > vb[1] && y + 8 * k < vb[1] + vb[3];
+      t.style.opacity = fits ? '' : '0';
+    });
     labelEls.forEach(function (t) {
       var a = t.anchor, right = a[0] > vb[0] + vb[2] * 0.62;
       t.setAttribute('x', a[0] + (right ? -10 : 10) * k); t.setAttribute('y', a[1] - 9 * k);

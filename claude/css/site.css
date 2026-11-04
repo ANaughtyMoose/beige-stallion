@@ -699,8 +699,8 @@ html.rm .seq__grid figcaption .cap, html:not(.js) .seq__grid figcaption .cap { f
   font: italic 500 clamp(2rem, 8.4vw, 4rem)/1.12 var(--f-display);
   margin: clamp(3rem, 9vw, 6rem) var(--gutter) 0; max-width: 46rem;
 }
-.ceremony span { display: block; }
-.ceremony span + span { color: var(--accent); }
+.ceremony > span { display: block; } /* direct children only: the line-split word spans inside must stay inline */
+.ceremony > span + span { color: var(--accent); }
 @media (min-width: 720px) { .ceremony { margin-left: var(--col-left); } }
 
 /* ---------- VII ---------- */
@@ -973,7 +973,7 @@ html.js:not(.rm) .divider.rv { transform: none; }
 html.js:not(.rm) .divider.rv .divider__num { transform: translateY(26px); opacity: 0; transition: transform 1.8s var(--slow), opacity 1.6s var(--slow); }
 html.js:not(.rm) .divider.rv.is-shown .divider__num { transform: none; opacity: 1; }
 .ln-wrap { display: block; overflow: hidden; padding: 0 .1em .1em; margin: 0 -.1em -.1em; text-indent: 0; }
-.pq blockquote p .ln-wrap:first-child { text-indent: -.42em; }
+.pq blockquote p .ln-wrap:first-child { text-indent: -.42em; padding-left: .6em; margin-left: -.6em; } /* room for the hanging opening quote, which the line mask used to clip */
 .ln { display: block; }
 html.js:not(.rm) .rv .ln { transform: translateY(108%); transition: transform 1.4s var(--slow); }
 html.js:not(.rm) .rv.is-shown .ln { transform: none; }
@@ -1021,3 +1021,7 @@ html.rm .opener__media img, html.rm .farewell__media img { transform: none !impo
   .strip, .intro, .honk, .corollas__form, .roads, .roll { display: none !important; }
   body { padding-top: 0; }
 }
+
+/* Without JavaScript the road list is empty: hide its heading, keep the noscript note */
+html:not(.js) #h-roll, html:not(.js) .roll__list { display: none; }
+.roll noscript p { margin: 0 auto 2rem; padding: 0 var(--gutter); max-width: calc(var(--col) + 2 * var(--gutter)); }
